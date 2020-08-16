@@ -59,5 +59,7 @@ client.on('message', message => {
 
 });
 
+let Token = fs.readFileSync('token.txt', 'utf8', function(err, result){});
+
 //End of the File
-client.login("NzQ0NTY5ODI5MTQ2NzU1MDg0.XzlIsA.FR4PanccPjurFKiKE-3Gw9X7lvU");
+client.login(Token);
