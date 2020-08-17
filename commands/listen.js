@@ -13,10 +13,13 @@ module.exports = {
                 if(args[1] === 'on'){
                     channel.join();
                     message.channel.send("Listening");
+                    settings.Global.Listen = true;
                 }else{
                     channel.leave();
                     message.channel.send("Giving Back Privacy");
+                    settings.Global.Listen = false;
                 }
+                fs.writeFile('Settings.json', JSON.stringify(settings), function(err, result){});
             }
             
         }

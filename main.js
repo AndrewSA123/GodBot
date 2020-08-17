@@ -15,7 +15,8 @@ if(!fs.existsSync('Settings.json')){
             Prefix: '!',
             Bitch: false,
             DefaultChannel: 'godbot-testing',
-            DefaultVoice: "472875727654748194"
+            DefaultVoice: "472875727654748194",
+            Listen: false
         }
     };
 
@@ -39,12 +40,14 @@ client.once('ready', () => {
 client.on('guildMemberSpeaking', (member, speaking) => {
     settings = JSON.parse(fs.readFileSync('Settings.json', 'utf8'));
 
-    if(speaking){
-        if(member.user.username == "CompactDan"){
-            member.send(`SHUT YOUR WHORE MOUTH!`);
+    if(settings.Global.Listen){
+        if(speaking){
+            if(member.user.username == "CompactDan"){
+                member.send(`SHUT YOUR WHORE MOUTH!`);
+            }
+            
+            console.log(`${member.displayName} SPOKE`);
         }
-        
-        console.log(`${member.displayName} SPOKE`);
     }
 });
 
