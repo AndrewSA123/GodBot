@@ -43,10 +43,8 @@ client.on('guildMemberSpeaking', (member, speaking) => {
     if(settings.Global.Listen){
         if(speaking){
             if(member.user.username == "CompactDan"){
-                member.send(`SHUT YOUR WHORE MOUTH!`);
+                member.voice.setMute(true);
             }
-            
-            console.log(`${member.displayName} SPOKE`);
         }
     }
 });
