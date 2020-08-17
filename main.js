@@ -12,6 +12,7 @@ var settings;
 if(!fs.existsSync('Settings.json')){
     var settingString = {
         Global: {
+            Prefix: '!',
             Bitch: false,
             DefaultChannel: 'godbot-testing'
         }
