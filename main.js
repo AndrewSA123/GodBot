@@ -5,8 +5,6 @@ const client = new Discord.Client();
 
 client.commands = new Discord.Collection();
 
-const prefix = '!';
-
 const commandFiles = new fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
 
 var settings;
@@ -40,6 +38,8 @@ client.on('message', message => {
 
     settings = JSON.parse(fs.readFileSync('Settings.json', 'utf8'));
 
+    const prefix = settings.Global.Prefix;
+
     if(settings.Global.Bitch && !message.author.bot){
         if(message.author.username != 'Andrew (BigCritz)'){
             message.delete();
@@ -55,7 +55,13 @@ client.on('message', message => {
 
     const command = args[0].toLowerCase();
 
-    client.commands.get(command).execute(message, args);
+    try{
+        client.commands.get(command).execute(message, args);
+    }catch(error){
+        console.error(error);
+        message.reply("Invalid Command!");
+    }
+    
 
 });
 
