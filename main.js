@@ -14,7 +14,8 @@ if(!fs.existsSync('Settings.json')){
         Global: {
             Prefix: '!',
             Bitch: false,
-            DefaultChannel: 'godbot-testing'
+            DefaultChannel: 'godbot-testing',
+            DefaultVoice: "472875727654748194"
         }
     };
 
@@ -33,6 +34,18 @@ for(const file of commandFiles){
 
 client.once('ready', () => {
     console.log("GodBot Online");
+});
+
+client.on('guildMemberSpeaking', (member, speaking) => {
+    settings = JSON.parse(fs.readFileSync('Settings.json', 'utf8'));
+
+    if(speaking){
+        if(member.user.username == "CompactDan"){
+            member.send(`SHUT YOUR WHORE MOUTH!`);
+        }
+        
+        console.log(`${member.displayName} SPOKE`);
+    }
 });
 
 client.on('message', message => {
@@ -57,7 +70,7 @@ client.on('message', message => {
     const command = args[0].toLowerCase();
 
     try{
-        client.commands.get(command).execute(message, args);
+        client.commands.get(command).execute(message, args, client, fs);
     }catch(error){
         console.error(error);
         message.reply("Invalid Command!");

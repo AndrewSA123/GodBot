@@ -1,7 +1,7 @@
 module.exports = {
     name: 'testparam',
     description: 'Test With Parameters',
-    execute(message, args){
+    execute(message, args, client, fs){
         if(args.length <= 1){
             message.channel.send("No Paramters Found");
         }else{

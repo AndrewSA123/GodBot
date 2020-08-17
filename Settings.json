@@ -2,6 +2,7 @@
     "Global": {
         "Prefix": "!",
         "Bitch": false,
-        "DefaultChannel": "godbot-testing"
+        "DefaultChannel": "godbot-testing",
+        "DefaultVoice": "472875727654748194"
     }
 }

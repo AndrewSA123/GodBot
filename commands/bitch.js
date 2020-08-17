@@ -1,9 +1,7 @@
 module.exports = {
     name: 'bitch',
     description: 'Test Description',
-    execute(message, args){
-        const fs = require('fs');
-
+    execute(message, args, client, fs){
         let settings = JSON.parse(fs.readFileSync('Settings.json', 'utf8'));
 
         if(args.length > 1){

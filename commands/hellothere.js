@@ -1,7 +1,7 @@
 module.exports = {
     name: 'hellothere',
     description: 'Jumps into the same room as the sender and sends kind words',
-    async execute(message, args){
+    async execute(message, args, client, fs){
         const ytdl = require('ytdl-core');
 
         if(message.member.voice.channel){
