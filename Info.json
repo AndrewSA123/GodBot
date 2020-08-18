@@ -28,7 +28,7 @@
         },
         {
           "name": "!listentarget",
-          "value": "Example '!listentarget [username]' changes the target for the listen command"
+          "value": "Example '!listentarget [UserID]' changes the target for the listen command"
         },
         {
           "name": "!listenchannel",

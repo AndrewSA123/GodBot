@@ -1,6 +1,6 @@
 module.exports = {
     name: 'listenchannel',
-    description: 'Test Description',
+    description: 'Changes the channel that the listen command will join',
     execute(message, args, client, fs){
 
         let settings = JSON.parse(fs.readFileSync('Settings.json', 'utf8'));

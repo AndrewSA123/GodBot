@@ -1,6 +1,6 @@
 module.exports = {
     name: 'listentarget',
-    description: 'Test Description',
+    description: 'Changes the Target of the Listen Command',
     execute(message, args, client, fs){
 
         let settings = JSON.parse(fs.readFileSync('Settings.json', 'utf8'));
