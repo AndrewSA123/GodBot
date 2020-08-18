@@ -2,9 +2,9 @@
     "Global": {
         "Prefix": "!",
         "Bitch": false,
-        "ListenTarget":"CompactDan",
         "DefaultChannel": "godbot-testing",
         "DefaultVoice": "472875727654748194",
-        "Listen": false
+        "Listen": false,
+        "ListenTarget":"CompactDan"
     }
 }
