@@ -16,7 +16,8 @@ if(!fs.existsSync('Settings.json')){
             Bitch: false,
             DefaultChannel: 'godbot-testing',
             DefaultVoice: "472875727654748194",
-            Listen: false
+            Listen: false,
+            ListenTarget: 'CompactDan'
         }
     };
 

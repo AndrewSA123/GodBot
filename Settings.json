@@ -5,6 +5,6 @@
         "DefaultChannel": "godbot-testing",
         "DefaultVoice": "472875727654748194",
         "Listen": false,
-        "ListenTarget":"CompactDan"
+        "ListenTarget": "CompactDan"
     }
 }

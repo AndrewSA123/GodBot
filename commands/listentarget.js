@@ -8,6 +8,7 @@ module.exports = {
         if(args.length > 1){
             settings.Global.ListenTarget = args[1];
             fs.writeFile('Settings.json', JSON.stringify(settings), function (err, result) { });
+            message.channel.send(`Target Acquired: ${args[1]}`);
         }
 
     }
