@@ -1,1 +1,12 @@
-{"Global":{"Prefix":"!","Bitch":false,"DefaultChannel":"godbot-testing","DefaultVoice":"549963709380952084","Listen":true,"ListenTarget":"342941329577213952","God":"159783547165605888","Limit":false}}
+{
+    "Global": {
+        "Prefix": "!",
+        "Bitch": false,
+        "DefaultChannel": "godbot-testing",
+        "DefaultVoice": "472875727654748194",
+        "Listen": false,
+        "ListenTarget": "342941329577213952",
+        "God": "159783547165605888",
+        "Limit": false
+    }
+}
