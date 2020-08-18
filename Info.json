@@ -20,27 +20,27 @@
         },
         {
           "name": "!bitch",
-          "value": "Example '!bitch on' \nTurns on bitch mode, this replaces all messages that aren't the specified persons with a meme"
+          "value": "Example: '!bitch' \nToggles bitch mode, this replaces all messages that aren't the specified persons with a meme"
         },
         {
           "name": "!listen",
-          "value": "Example '!listen' \nJoins the specified channel in the config and listens for when a specified person speaks, then mutes them"
+          "value": "Example: '!listen' \nJoins the specified channel in the config and listens for when a specified person speaks, then mutes them"
         },
         {
           "name": "!listentarget",
-          "value": "Example '!listentarget [UserID]' changes the target for the listen command"
+          "value": "Example: '!listentarget [UserID]' \nchanges the target for the listen command"
         },
         {
           "name": "!listenchannel",
-          "value": "Example '!listenchannel [ChannelID]' takes in a channel ID (Google how to find this), this will be the channel the bot connects to when the listen command is called"
+          "value": "Example: '!listenchannel [ChannelID]' \ntakes in a channel ID (Google how to find this), this will be the channel the bot connects to when the listen command is called"
         },
         {
           "name": "!setgod",
-          "value": "Example '!setgod [UserID]' changes god for the limit command"
+          "value": "Example: '!setgod [UserID]' \nchanges god for the limit command"
         },
         {
           "name": "!limit",
-          "value": "Example '!setgod' Toggles whether or not only god can command the bot"
+          "value": "Example: '!limit' \nToggles whether or not only god can command the bot"
         }
       ]
     }
