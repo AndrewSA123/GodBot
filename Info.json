@@ -1,0 +1,39 @@
+{
+    "content": "GodBot Info Page",
+    "embed": {
+      "title": "GobBot Info",
+      "description": "Below is a list of commands:",
+      "url": "https://github.com/AndrewSA123/GodBot",
+      "color": 172621,
+      "thumbnail": {
+        "url": "https://cdn.discordapp.com/embed/avatars/0.png"
+      },
+      "author": {
+        "name": "God (Andrew)",
+        "url": "https://andrewsa123.github.io/",
+        "icon_url": "https://cdn.discordapp.com/embed/avatars/0.png"
+      },
+      "fields": [
+        {
+          "name": "!changeprefix",
+          "value": "Example: '!changeprefix -' \nThis changes the prefix for all commands"
+        },
+        {
+          "name": "!bitch",
+          "value": "Example '!bitch on' \nTurns on bitch mode, this replaces all messages that aren't the specified persons with a meme"
+        },
+        {
+          "name": "!listen",
+          "value": "Example '!listen on' \nJoins the specified channel in the config and listens for when a specified person speaks, then mutes them"
+        },
+        {
+          "name": "!listentarget",
+          "value": "Example '!listentarget [username]' changes the target for the listen command"
+        },
+        {
+          "name": "!listenchannel",
+          "value": "Example '!listenchannel [ChannelID]' takes in a channel ID (Google how to find this), this will be the channel the bot connects to when the listen command is called"
+        }
+      ]
+    }
+  }

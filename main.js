@@ -42,8 +42,12 @@ client.on('guildMemberSpeaking', (member, speaking) => {
 
     if(settings.Global.Listen){
         if(speaking){
-            if(member.user.username == "CompactDan"){
+            if(member.user.username == settings.Global.ListenTarget){
                 member.voice.setMute(true);
+            }
+        }else{
+            if(member.user.username == settings.Global.ListenTarget){
+                member.voice.setMute(false);
             }
         }
     }
