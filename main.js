@@ -56,6 +56,12 @@ client.on('guildMemberSpeaking', (member, speaking) => {
     }
 });
 
+client.on('messageUpdate', (oldMessage, newMessage) => {
+    settings = JSON.parse(fs.readFileSync('Settings.json', 'utf8'));
+
+    oldMessage.author.send("Don't think I didn't see you edit that message :)");
+});
+
 client.on('message', message => {
 
     settings = JSON.parse(fs.readFileSync('Settings.json', 'utf8'));
