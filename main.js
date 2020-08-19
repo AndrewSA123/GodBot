@@ -18,7 +18,8 @@ if (!fs.existsSync('Settings.json')) {
             DefaultVoice: "472875727654748194",
             Listen: false,
             ListenTarget: '342941329577213952',
-            God: "159783547165605888"
+            God: "159783547165605888",
+            Limit: false
         }
     };
 
