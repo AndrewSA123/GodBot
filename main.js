@@ -9,6 +9,7 @@ const commandFiles = new fs.readdirSync('./commands/').filter(file => file.endsW
 
 var settings;
 
+//Check if settings exists if not create new file
 if (!fs.existsSync('Settings.json')) {
     var settingString = {
         Global: {
@@ -20,6 +21,10 @@ if (!fs.existsSync('Settings.json')) {
             ListenTarget: '342941329577213952',
             God: "159783547165605888",
             Limit: false
+        },
+        Http:{
+            Port: 3344,
+            HostName: "127.0.0.1"
         }
     };
 
@@ -30,12 +35,14 @@ if (!fs.existsSync('Settings.json')) {
 
 settings = JSON.parse(fs.readFileSync('Settings.json', 'utf8'));
 
+//adds commands to a list from the commands folder
 for (const file of commandFiles) {
     const command = require(`./commands/${file}`);
 
     client.commands.set(command.name, command);
 }
 
+//Discord bot event listeners
 client.once('ready', () => {
     console.log("GodBot Online");
     if(settings.Global.Listen){
@@ -100,7 +107,71 @@ client.on('message', message => {
 
 });
 
-let Token = fs.readFileSync('token.txt', 'utf8', function (err, result) { });
+//API Layer
+const http = require('http');
+const hostname = settings.Http.HostName;
+const port = settings.Http.Port;
+const express = require('express');
+const app = express();
+const server = http.createServer(app);
+app.use(express.json());
 
-//End of the File
-client.login(Token);
+//Do on startup
+server.listen(port, hostname, () => {
+    console.log("API Connected");
+});
+
+//Endpoints
+app.post('/SendMessage', (req, res) => {
+    const channel = client.channels.cache.get(req.body.Channel);
+    channel.send(req.body.Message);
+
+    var response = {
+        Status: 200,
+        Message: "Message Sent"
+    };
+
+    res.json(JSON.stringify(response));
+});
+
+app.post('/SendMessageWithMention', (req, res) => {
+    const channel = client.channels.cache.get(req.body.Channel);
+    channel.send("<@" + req.body.Mention + ">" + " " + req.body.Message);
+
+    var response = {
+        Status: 200,
+        Message: "Message Sent"
+    };
+
+    res.json(JSON.stringify(response));
+});
+
+app.post('/GetTextChannels', (req, res) => {
+    res.json(JSON.stringify(client.guilds.cache.get(req.body.GuildID).channels.cache.filter(m => m.type == "text")));
+});
+
+app.post('/GetVoiceChannels', (req, res) => {
+    res.json(JSON.stringify(client.guilds.cache.get(req.body.GuildID).channels.cache.filter(m => m.type == "voice")));
+});
+
+app.get('/GetAllOnlineMembers', (req, res) => {
+    const guild = client.guilds.cache.get(req.body.Guild);
+    res.json(JSON.stringify(guild.members.cache.filter(m => m.presence.status == 'online')));
+});
+
+app.post('/ChangeSettings', (req, res) => {
+    fs.writeFileSync('Settings.json', JSON.stringify(req.body), function (err, result) { });
+
+    settings = JSON.parse(fs.readFileSync('Settings.json', 'utf8'));
+
+    res.json(settings);
+});
+
+
+    //End of the File
+try{
+    let Token = fs.readFileSync('token.txt', 'utf8', function (err, result) { });
+    client.login(Token);
+}catch(err){
+    console.log("Token Error!");
+}
