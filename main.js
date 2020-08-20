@@ -61,6 +61,7 @@ client.on('messageUpdate', (oldMessage, newMessage) => {
     settings = JSON.parse(fs.readFileSync('Settings.json', 'utf8'));
 
     oldMessage.author.send("Don't think I didn't see you edit that message :)");
+    oldMessage.channel.send(`${oldMessage.author} edited a message\n` + 'Old Message:' + oldMessage.content + '\n\n' + 'New Message' + newMessage.content);
 });
 
 client.on('message', message => {
