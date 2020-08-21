@@ -123,7 +123,8 @@ server.listen(port, hostname, () => {
 
 //Endpoints
 app.post('/SendMessage', (req, res) => {
-    const channel = client.channels.cache.get(req.body.Channel);
+    const guild = client.guilds.cache.get(req.body.GuildID);
+    const channel = guild.channels.cache.get(req.body.Channel);
     channel.send(req.body.Message);
 
     var response = {
@@ -135,7 +136,8 @@ app.post('/SendMessage', (req, res) => {
 });
 
 app.post('/SendMessageWithMention', (req, res) => {
-    const channel = client.channels.cache.get(req.body.Channel);
+    const guild = client.guilds.cache.get(req.body.GuildID);
+    const channel = guild.channels.cache.get(req.body.Channel);
     channel.send("<@" + req.body.Mention + ">" + " " + req.body.Message);
 
     var response = {
@@ -154,9 +156,13 @@ app.post('/GetVoiceChannels', (req, res) => {
     res.json(JSON.stringify(client.guilds.cache.get(req.body.GuildID).channels.cache.filter(m => m.type == "voice")));
 });
 
-app.get('/GetAllOnlineMembers', (req, res) => {
-    const guild = client.guilds.cache.get(req.body.Guild);
-    res.json(JSON.stringify(guild.members.cache.filter(m => m.presence.status == 'online')));
+app.get('/GetAllGuilds', (req, res) => {
+    res.json(JSON.stringify(client.guilds.cache));
+});
+
+app.post('/GetAllMembers', (req, res) => {
+    const guild = client.guilds.cache.get(req.body.GuildID);
+    res.json(JSON.stringify(guild.members.cache));
 });
 
 app.post('/ChangeSettings', (req, res) => {
