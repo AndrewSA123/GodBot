@@ -68,7 +68,7 @@ client.on('messageUpdate', (oldMessage, newMessage) => {
     settings = JSON.parse(fs.readFileSync('Settings.json', 'utf8'));
 
     oldMessage.author.send("Don't think I didn't see you edit that message :)");
-    oldMessage.channel.send(`${oldMessage.author} edited a message\n` + 'Old Message:' + oldMessage.content + '\n\n' + 'New Message' + newMessage.content);
+    oldMessage.channel.send(`${oldMessage.author} edited a message\n` + 'Old Message: ' + oldMessage.content + '\n\n' + 'New Message: ' + newMessage.content);
 });
 
 client.on('message', message => {
@@ -132,7 +132,7 @@ app.post('/SendMessage', (req, res) => {
         Message: "Message Sent"
     };
 
-    res.json(JSON.stringify(response));
+    res.json(response);
 });
 
 app.post('/SendMessageWithMention', (req, res) => {
@@ -145,24 +145,40 @@ app.post('/SendMessageWithMention', (req, res) => {
         Message: "Message Sent"
     };
 
-    res.json(JSON.stringify(response));
+    res.json(response);
+});
+
+app.post('/GetMessagesForChannel', async (req, res) => {
+    const guild = client.guilds.cache.get(req.body.GuildID);
+    const channel = guild.channels.cache.get(req.body.Channel);
+
+    const messages = await channel.messages.fetch({ limit: 15 });
+
+    res.json(messages);
 });
 
 app.post('/GetTextChannels', (req, res) => {
-    res.json(JSON.stringify(client.guilds.cache.get(req.body.GuildID).channels.cache.filter(m => m.type == "text")));
+    res.json(client.guilds.cache.get(req.body.GuildID).channels.cache.filter(m => m.type == "text"));
 });
 
 app.post('/GetVoiceChannels', (req, res) => {
-    res.json(JSON.stringify(client.guilds.cache.get(req.body.GuildID).channels.cache.filter(m => m.type == "voice")));
+    res.json(client.guilds.cache.get(req.body.GuildID).channels.cache.filter(m => m.type == "voice"));
 });
 
 app.get('/GetAllGuilds', (req, res) => {
-    res.json(JSON.stringify(client.guilds.cache));
+    res.json(client.guilds.cache);
 });
 
 app.post('/GetAllMembers', (req, res) => {
     const guild = client.guilds.cache.get(req.body.GuildID);
-    res.json(JSON.stringify(guild.members.cache));
+    res.json(guild.members.cache);
+});
+
+app.post('/GetMemberByID', (req, res) => {
+    const guild = client.guilds.cache.get(req.body.GuildID);
+    const member = guild.members.cache.get(req.body.MemberID);
+
+    res.json(member);
 });
 
 app.post('/ChangeSettings', (req, res) => {
