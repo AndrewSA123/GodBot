@@ -67,8 +67,8 @@ client.on('guildMemberSpeaking', (member, speaking) => {
 client.on('messageUpdate', (oldMessage, newMessage) => {
     settings = JSON.parse(fs.readFileSync('Settings.json', 'utf8'));
 
-    oldMessage.author.send("Don't think I didn't see you edit that message :)");
-    oldMessage.channel.send(`${oldMessage.author} edited a message\n` + 'Old Message: ' + oldMessage.content + '\n\n' + 'New Message: ' + newMessage.content);
+    //oldMessage.author.send("Don't think I didn't see you edit that message :)");
+    //oldMessage.channel.send(`${oldMessage.author} edited a message\n` + 'Old Message: ' + oldMessage.content + '\n\n' + 'New Message: ' + newMessage.content);
 });
 
 client.on('message', message => {
@@ -152,7 +152,7 @@ app.post('/GetMessagesForChannel', async (req, res) => {
     const guild = client.guilds.cache.get(req.body.GuildID);
     const channel = guild.channels.cache.get(req.body.Channel);
 
-    const messages = await channel.messages.fetch({ limit: 15 });
+    const messages = await channel.messages.fetch({ limit: req.body.Limit });
 
     res.json(messages);
 });
