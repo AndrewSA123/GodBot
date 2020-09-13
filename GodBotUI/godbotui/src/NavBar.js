@@ -19,16 +19,8 @@ class NavBar extends Component {
         var url = this.state.APIIP + "GetAllGuilds";
         await axios.get(url).then((res) => {
             this.state.guilds = res.data;
-            
         });
-
-        for (var i = 0; i < this.state.guilds.length; i++) {
-            console.log(this.state.guilds[i].name);
-            ReactDOM.render(<li id={this.state.guilds[i].id}><a href="#" className="NavItem">{this.state.guilds[i].name}</a></li>, NavBar);
-        }
-
-        
-        
+        console.log(this.state.guilds);
     }
 
     render() {
@@ -36,9 +28,11 @@ class NavBar extends Component {
 
             <div className="NavBar">
                 <ul id="NavBarUL">
-                    {this.guilds}
-                    {/* <li><a href="#" className="NavItem">Test Item 1</a></li>
-                    <li><a href="#" className="NavItem">Test Item 2</a></li> */}
+                    {
+                        this.state.guilds.map(item => {
+                            return <li id={item.id}><a href="#" className="NavItem">{item.name}</a></li>
+                        })
+                    }
                 </ul>
             </div>
 
