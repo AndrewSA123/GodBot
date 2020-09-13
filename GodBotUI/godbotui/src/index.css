@@ -11,3 +11,34 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Add a black background color to the top navigation */
+.NavBar {
+  background-color: #52d9ff;
+  overflow: hidden;
+  padding: 0%;
+}
+
+/* Style the links inside the navigation bar */
+.NavBar a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding-bottom: 15px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.NavBar ul{
+  list-style-type: none;
+  margin-block-start: 0em;
+}
+
+/* Change the color of links on hover */
+.NavBar a:hover {
+  background-color: #0097c2;
+  color: white;
+}
