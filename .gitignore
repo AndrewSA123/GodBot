@@ -41,6 +41,9 @@ build/Release
 node_modules/
 jspm_packages/
 token.txt
+GodBotUI/godbotui/node_modules
+GodBotUI/godbotui/.gitignore
+GodBotUI/godbotui/README.md
 
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
