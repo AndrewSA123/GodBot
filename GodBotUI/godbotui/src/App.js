@@ -14,6 +14,7 @@ function App() {
           className="App-link"
           href="https://github.com/AndrewSA123/GodBot"
           target="_blank"
+          rel="noopener noreferer"
         >
           GodBot Github
         </a>
