@@ -41,6 +41,7 @@ build/Release
 node_modules/
 jspm_packages/
 token.txt
+RiotKey.txt
 GodBotUI/godbotui/node_modules
 GodBotUI/godbotui/.gitignore
 GodBotUI/godbotui/README.md
