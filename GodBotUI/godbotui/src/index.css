@@ -14,7 +14,7 @@ code {
 
 /* Add a black background color to the top navigation */
 .NavBar {
-  background-color: #52d9ff;
+  background-color: #64dfdf;
   overflow: hidden;
   padding: 0%;
 }
@@ -39,6 +39,14 @@ code {
 
 /* Change the color of links on hover */
 .NavBar a:hover {
-  background-color: #0097c2;
+  background-color: #56cfe1;
   color: white;
+}
+
+.dropdown-menu{
+  background-color: #56cfe1;
+}
+
+a.dropdown-item:hover{
+background-color: #44a9b8;
 }

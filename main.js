@@ -1,5 +1,8 @@
 const Discord = require('discord.js');
 const fs = require('fs');
+const { RiotAPI, RiotAPITypes, PlatformId } = require('@fightmegg/riot-api');
+let RiotKey = fs.readFileSync('RiotKey.txt', 'utf8', function (err, result) { });
+const rAPI = new RiotAPI(RiotKey);
 
 const client = new Discord.Client();
 
@@ -98,7 +101,7 @@ client.on('message', message => {
     const command = args[0].toLowerCase();
 
     try {
-        client.commands.get(command).execute(message, args, client, fs);
+        client.commands.get(command).execute(message, args, client, fs, rAPI, RiotAPITypes, PlatformId);
     } catch (error) {
         console.error(error);
         message.reply("Invalid Command!");
@@ -114,7 +117,9 @@ const port = settings.Http.Port;
 const express = require('express');
 const app = express();
 const server = http.createServer(app);
+var cors = require('cors')
 app.use(express.json());
+app.use(cors());
 
 //Do on startup
 server.listen(port, hostname, () => {

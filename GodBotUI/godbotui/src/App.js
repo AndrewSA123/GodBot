@@ -24,7 +24,7 @@ class App extends Component {
             className="App-link"
             href="https://github.com/AndrewSA123/GodBot"
             target="_blank"
-            rel="noopener noreferer"
+            rel="noopener noreferrer"
           >
             GodBot Github
           </a>

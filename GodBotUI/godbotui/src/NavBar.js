@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import logo from './logo.svg';
-import axios from 'axios';
-import { ReactionEmoji } from 'discord.js';
+import NavItem from './Components/NavItem.js'
 
 class NavBar extends Component {
 
@@ -10,17 +7,19 @@ class NavBar extends Component {
         super(props);
         this.state = {
             APIIP: props.API,
-            guilds: []
+            guilds: props.Guilds,
+            thenGuilds: []
         };
     }
 
-    async componentDidMount() {
-        var NavBar = document.getElementById('NavBarUL');
-        var url = this.state.APIIP + "GetAllGuilds";
-        await axios.get(url).then((res) => {
-            this.state.guilds = res.data;
+    componentDidMount() {
+        this.state.guilds.then(item => {
+            this.setState({
+                thenGuilds: item
+            });
         });
-        console.log(this.state.guilds);
+
+        
     }
 
     render() {
@@ -29,8 +28,8 @@ class NavBar extends Component {
             <div className="NavBar">
                 <ul id="NavBarUL">
                     {
-                        this.state.guilds.map(item => {
-                            return <li id={item.id}><a href="#" className="NavItem">{item.name}</a></li>
+                        this.state.thenGuilds.map(item => {
+                            return <NavItem Name={item.name} ID={item.id} API={this.state.APIIP}/>
                         })
                     }
                 </ul>
