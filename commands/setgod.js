@@ -1,7 +1,7 @@
 module.exports = {
     name: 'setgod',
     description: 'Changes the Target of the Listen Command',
-    execute(message, args, client, fs){
+    execute(message, args, client, fs, rAPI, RiotAPITypes, PlatformId){
 
         let settings = JSON.parse(fs.readFileSync('Settings.json', 'utf8'));
 

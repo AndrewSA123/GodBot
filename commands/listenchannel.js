@@ -1,7 +1,7 @@
 module.exports = {
     name: 'listenchannel',
     description: 'Changes the channel that the listen command will join',
-    execute(message, args, client, fs){
+    execute(message, args, client, fs, rAPI, RiotAPITypes, PlatformId){
 
         let settings = JSON.parse(fs.readFileSync('Settings.json', 'utf8'));
 

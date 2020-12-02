@@ -1,7 +1,7 @@
 module.exports = {
     name: 'limit',
     description: 'Limits the bot to only be used by GOD',
-    execute(message, args, client, fs){
+    execute(message, args, client, fs, rAPI, RiotAPITypes, PlatformId){
 
         let settings = JSON.parse(fs.readFileSync('Settings.json', 'utf8'));
 

@@ -1,7 +1,7 @@
 module.exports = {
     name: 'bitch',
     description: 'Test Description',
-    execute(message, args, client, fs){
+    execute(message, args, client, fs, rAPI, RiotAPITypes, PlatformId){
         let settings = JSON.parse(fs.readFileSync('Settings.json', 'utf8'));
 
         if(settings.Global.Bitch){

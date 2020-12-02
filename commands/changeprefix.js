@@ -1,7 +1,7 @@
 module.exports = {
     name: 'changeprefix',
     description: 'Test Description',
-    execute(message, args, client, fs){
+    execute(message, args, client, fs, rAPI, RiotAPITypes, PlatformId){
 
         let settings = JSON.parse(fs.readFileSync('Settings.json', 'utf8'));
 
