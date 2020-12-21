@@ -43,6 +43,7 @@ jspm_packages/
 token.txt
 RiotKey.txt
 GodBotUI/godbotui/node_modules
+GodBot_Eyes/node_modules
 GodBotUI/godbotui/.gitignore
 GodBotUI/godbotui/README.md
 
