@@ -35,8 +35,8 @@ function App() {
     // Check data is available
     if (
       typeof webcamRef.current !== "undefined" &&
-      webcamRef.current !== null //&&
-      // webcamRef.current.video.readyState === 4
+      webcamRef.current !== null &&
+      webcamRef.current.video.readyState === 4
     ) {
       // Get Video Properties
       const video = webcamRef.current.video;
