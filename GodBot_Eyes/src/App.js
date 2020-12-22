@@ -67,6 +67,8 @@ function App() {
       // drawSomething(obj, ctx) 
       
       drawRect(obj, ctx);
+    }else{
+      console.log("No Webcam found!")
     }
   };
 
