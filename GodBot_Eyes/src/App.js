@@ -35,8 +35,8 @@ function App() {
     // Check data is available
     if (
       typeof webcamRef.current !== "undefined" &&
-      webcamRef.current !== null &&
-      webcamRef.current.video.readyState === 4
+      webcamRef.current !== null //&&
+      // webcamRef.current.video.readyState === 4
     ) {
       // Get Video Properties
       const video = webcamRef.current.video;
@@ -69,7 +69,7 @@ function App() {
       drawRect(obj, ctx);
     }else{
       console.log("No Webcam found!");
-      console.log(webcamRef);
+      console.log(webcamRef);4
     }
   };
 
