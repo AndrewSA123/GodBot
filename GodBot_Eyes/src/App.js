@@ -15,7 +15,6 @@ function App() {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
 
-
   // Main function
   const runCoco = async () => {
     // 3. TODO - Load network 
@@ -69,7 +68,7 @@ function App() {
       drawRect(obj, ctx);
     }else{
       console.log("No Webcam found!");
-      console.log(webcamRef.current.state);
+      console.log(webcamRef);
     }
   };
 
