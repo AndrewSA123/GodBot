@@ -12,8 +12,8 @@ import "./App.css";
 import {drawRect} from "./utilities";
 
 function App() {
-  const webcamRef = useRef(null);
-  const canvasRef = useRef(null);
+  const webcamRef = React.createRef();
+  const canvasRef = React.createRef();
 
   // Main function
   const runCoco = async () => {
