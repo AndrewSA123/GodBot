@@ -18,7 +18,7 @@ function App() {
 
   // Main function
   const runCoco = async () => {
-    tf.setBackend('cpu');
+    tf.setBackend('webgl');
     await tf.ready();
     // 3. TODO - Load network 
     // e.g. const net = await cocossd.load();
