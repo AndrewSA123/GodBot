@@ -12,11 +12,14 @@ import "./App.css";
 import {drawRect} from "./utilities";
 
 function App() {
+
   const webcamRef = React.createRef();
   const canvasRef = React.createRef();
 
   // Main function
   const runCoco = async () => {
+    tf.setBackend('cpu');
+    await tf.ready();
     // 3. TODO - Load network 
     // e.g. const net = await cocossd.load();
     const net = await cocossd.load();
