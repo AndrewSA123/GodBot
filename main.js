@@ -88,9 +88,11 @@ client.on('message', message => {
         }
     }
     if(settings.Global.Limit){
-        if(message.author.id != settings.Global.God && !message.author.bot){
-            message.channel.send("You're not worthy!");
-            return;
+        if(message.channel.name == settings.Global.DefaultChannel){
+            if(message.author.id != settings.Global.God && !message.author.bot){
+                message.channel.send("You're not worthy!");
+                return;
+            }
         }
     }
     if (!message.content.startsWith(prefix) || message.author.bot) return;
