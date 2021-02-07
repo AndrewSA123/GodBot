@@ -109,9 +109,8 @@ client.on('message', message => {
         var PersonOBJ = names.Names.find(o => o.Key === message.author.id);
         
         if(typeof PersonOBJ !== 'undefined'){
-            var name = PersonOBJ.Value;
-            var resps = JSON.parse(fs.readFileSync('Responses.Json', 'utf8')).resp;
-            var resp = resps[Math.floor(Math.random() * resps.length)];
+            var name = PersonOBJ.Name;
+            var resp = PersonOBJ.Insults[Math.floor(Math.random() * PersonOBJ.Insults.length)];
             message.reply(resp.Value.replace('{name}', name));
         }else{
             message.reply("Invalid Command!");

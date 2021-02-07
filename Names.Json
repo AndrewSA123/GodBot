@@ -2,35 +2,180 @@
     "Names": [
         {
             "Key" : "159783547165605888",
-            "Value" : "Andy"
+            "Name" : "Andy",
+            "Insults" : [
+                {
+                    "Value" : "Top Knock {name}!"
+                },
+                {
+                    "Value" : "You're a weeb, just like the Tau, {name}?"
+                },
+                {
+                    "Value" : "Obviously the fattest in the discord {name}!"
+                },
+                {
+                    "Value" : "Were you dropped as a child {name}?"
+                },
+                {
+                    "Value" : "I heard you had a bent penis, {name}."
+                },
+                {
+                    "Value" : "Does your penis bend in a strange way {name}?"
+                },
+                {
+                    "Value" : "What did I ever do to you {name}?"
+                }
+            ]
         },
         {
             "Key" : "364805721100910592",
-            "Value" : "Myers"
+            "Name" : "Myers",
+            "Insults" : [
+                {
+                    "Value" : "Can't hear you over that lisp {name}!"
+                },
+                {
+                    "Value" : "A light breeze could push you over {name}, and you think you can come here chatting shit?"
+                },
+                {
+                    "value" : "Alright Sid fuck off {name}!"
+                },
+                {
+                    "Value" : "Were you dropped as a child {name}?"
+                },
+                {
+                    "Value" : "I heard you had a bent penis, {name}."
+                },
+                {
+                    "Value" : "Does your penis bend in a strange way {name}?"
+                },
+                {
+                    "Value" : "What did I ever do to you {name}?"
+                }
+            ]
         },
         {
             "Key" : "477645370617364481",
-            "Value" : "Jim"
+            "Name" : "Jim",
+            "Insults" : [
+                {
+                    "Value" : "Couldn't see your command through the shine of your hair line, sorry {name}."
+                },
+                {
+                    "Value" : "Couldn't see the command, not enough vision score {name}."
+                },
+                {
+                    "Value" : "Were you dropped as a child {name}?"
+                },
+                {
+                    "Value" : "I heard you had a bent penis, {name}."
+                },
+                {
+                    "Value" : "Does your penis bend in a strange way {name}?"
+                },
+                {
+                    "Value" : "What did I ever do to you {name}?"
+                }
+            ]
         },
         {
             "Key" : "328995208266252298",
-            "Value" : "Merete"
+            "Name" : "Merete",
+            "Insults" : [
+                {
+                    "Value" : "Were you dropped as a child {name}?"
+                },
+                {
+                    "Value" : "I heard you had a bent penis, {name}."
+                },
+                {
+                    "Value" : "Does your penis bend in a strange way {name}?"
+                },
+                {
+                    "Value" : "What did I ever do to you {name}?"
+                }
+            ]
         },
         {
             "Key" : "342941329577213952",
-            "Value" : "Callum"
+            "Name" : "Callum",
+            "Insults" : [
+                {
+                    "Value" : "Were you dropped as a child {name}?"
+                },
+                {
+                    "Value" : "I heard you had a bent penis, {name}."
+                },
+                {
+                    "Value" : "Does your penis bend in a strange way {name}?"
+                },
+                {
+                    "Value" : "What did I ever do to you {name}?"
+                }
+            ]
         },
         {
             "Key" : "489882169955713057",
-            "Value" : "Ben"
+            "Name" : "Ben",
+            "Insults" : [
+                {
+                    "Value" : "Pretty sure Elvis left the building a long time ago {name}, Elvis being your brain."
+                },
+                {
+                    "Value" : "Were you dropped as a child {name}?"
+                },
+                {
+                    "Value" : "I heard you had a bent penis, {name}."
+                },
+                {
+                    "Value" : "Does your penis bend in a strange way {name}?"
+                },
+                {
+                    "Value" : "What did I ever do to you {name}?"
+                }
+            ]
         },
         {
             "Key" : "288744926215274499",
-            "Value" : "Gareth"
+            "Name" : "Gareth",
+            "Insults" : [
+                {
+                    "Value" : "Listen mate, I will bash your head in again {name}!"
+                },
+                {
+                    "Value" : "Cammands with that name === Your kills in most illaoi games {name}."
+                },
+                {
+                    "Value" : "Were you dropped as a child {name}?"
+                },
+                {
+                    "Value" : "I heard you had a bent penis, {name}."
+                },
+                {
+                    "Value" : "Does your penis bend in a strange way {name}?"
+                },
+                {
+                    "Value" : "What did I ever do to you {name}?"
+                }
+            ]
         },
         {
             "Key" : "293471739797569537",
-            "Value" : "Simon"
+            "Name" : "Simon",
+            "Insults" : [
+                {
+                    "Value" : "Were you dropped as a child {name}?"
+                },
+                {
+                    "Value" : "I heard you had a bent penis, {name}."
+                },
+                {
+                    "Value" : "Does your penis bend in a strange way {name}?"
+                },
+                {
+                    "Value" : "What did I ever do to you {name}?"
+                }
+            ]
         }
     ]
 }
