@@ -5,6 +5,21 @@
         },
         {
             "Value" : "Were you born stupid {name}?"
+        },
+        {
+            "Value" : "You fucking idiot, {name}!"
+        },
+        {
+            "Value" : "Were you dropped as a child {name}?"
+        },
+        {
+            "Value" : "I heard you had a small penis, {name}."
+        },
+        {
+            "Value" : "Does your penis bend in a strange way {name}?"
+        },
+        {
+            "Value" : "What did I ever do to you {name}?"
         }
     ]
 }
