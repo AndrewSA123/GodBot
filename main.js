@@ -106,7 +106,17 @@ client.on('message', message => {
         client.commands.get(command).execute(message, args, client, fs, rAPI, RiotAPITypes, PlatformId);
     } catch (error) {
         console.error(error);
-        message.reply("Invalid Command!");
+        var names = JSON.parse(fs.readFileSync('Names.Json', 'utf8'));
+        var PersonOBJ = names.Names.find(o => o.Key === message.author.id);
+        
+        if(typeof PersonOBJ !== 'undefined'){
+            var name = PersonOBJ.Value;
+            var resps = JSON.parse(fs.readFileSync('Responses.Json', 'utf8')).resp;
+            var resp = resps[Math.floor(Math.random() * resps.length)];
+            message.reply(resp.Value.replace('{name}', name));
+        }else{
+            message.reply("Invalid Command!");
+        }
     }
 
 
