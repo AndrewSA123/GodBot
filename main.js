@@ -105,7 +105,6 @@ client.on('message', message => {
     try {
         client.commands.get(command).execute(message, args, client, fs, rAPI, RiotAPITypes, PlatformId);
     } catch (error) {
-        console.error(error);
         var names = JSON.parse(fs.readFileSync('Names.Json', 'utf8'));
         var PersonOBJ = names.Names.find(o => o.Key === message.author.id);
         
