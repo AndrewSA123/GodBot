@@ -101,6 +101,9 @@
             "Name" : "Callum",
             "Insults" : [
                 {
+                    "Value" : "Sorry Jordan that commands doesn't exist, oh my bad {name}."
+                },
+                {
                     "Value" : "Were you dropped as a child {name}?"
                 },
                 {
@@ -163,6 +166,30 @@
             "Key" : "293471739797569537",
             "Name" : "Simon",
             "Insults" : [
+                {
+                    "Value" : "Cannot see command, too many carrots in the way {name}!"
+                },
+                {
+                    "Value" : "Were you dropped as a child {name}?"
+                },
+                {
+                    "Value" : "I heard you had a bent penis, {name}."
+                },
+                {
+                    "Value" : "Does your penis bend in a strange way {name}?"
+                },
+                {
+                    "Value" : "What did I ever do to you {name}?"
+                }
+            ]
+        },
+        {
+            "Key" : "259365282823405568",
+            "Name" : "Jordan",
+            "Insults" : [
+                {
+                    "Value" : "Sorry Callum that commands doesn't exist, oh my bad {name}."
+                },
                 {
                     "Value" : "Were you dropped as a child {name}?"
                 },
