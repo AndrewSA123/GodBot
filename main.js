@@ -204,6 +204,12 @@ app.post('/ChangeSettings', (req, res) => {
     res.json(settings);
 });
 
+app.get('/GetSettings', (req, res) => {
+    settings = JSON.parse(fs.readFileSync('Settings.json', 'utf8'));
+
+    res.json(settings);
+});
+
 
     //End of the File
 try{

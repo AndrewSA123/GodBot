@@ -11,7 +11,7 @@
                     "Value" : "You're a weeb, just like the Tau, {name}?"
                 },
                 {
-                    "Value" : "Obviously the fattest in the discord {name}!"
+                    "Value" : "You're obviously the fattest in the discord, {name}!"
                 },
                 {
                     "Value" : "Were you dropped as a child {name}?"
@@ -189,6 +189,9 @@
             "Insults" : [
                 {
                     "Value" : "Sorry Callum that commands doesn't exist, oh my bad {name}."
+                },
+                {
+                    "Value" : "Too busy watching gay hentai to listen, sorry {name}."
                 },
                 {
                     "Value" : "Were you dropped as a child {name}?"
