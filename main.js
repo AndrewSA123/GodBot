@@ -185,7 +185,6 @@ app.get('/GetAllGuilds', (req, res) => {
 });
 
 app.post('/GetAllMembers', (req, res) => {
-    console.log(req.body);
     const guild = client.guilds.cache.get(req.body.GuildID);
     res.json(guild.members.cache);
 });
