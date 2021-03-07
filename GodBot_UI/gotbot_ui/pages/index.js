@@ -2,7 +2,7 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Webcam from 'react-webcam'
 import Link from 'next/link'
-import NavBar from '../components/NavBar'
+import TitleBar from '../components/TitleBar'
 
 export default function Home() {
   return (
@@ -13,14 +13,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          <a href="https://github.com/AndrewSA123/GodBot" target="_blank">GodBot</a> Home Assistant/Discord Bot
-        </h1>
-
-        <p className={styles.description}>
-          Home assistant for Andrew
-        </p>
-        <NavBar />
+        <TitleBar SubTitle="Home assistant for Andrew" />
 
         <div className={styles.grid}>
           <div className={styles.card}>

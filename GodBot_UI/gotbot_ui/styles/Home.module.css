@@ -149,10 +149,22 @@
   border-radius: 10px;
 } 
 
+.NavBar{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin-top: 3rem;
+}
+
 .NavBaritem {
   padding: 5px;
+  margin: 5px;
+  margin-bottom: 10px;;
   border: 1px solid #eaeaea;
   border-radius: 10px;
+  flex-basis: 20%;
 }
 
 .FancyText {
