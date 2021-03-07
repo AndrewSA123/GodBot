@@ -16,12 +16,12 @@ export default function NavBar() {
           </div>
           <div className={styles.NavBaritem}>
             <p className={styles.FancyText}>
-                <Link href="/discord">Discord</Link>
+                <Link href="/tbd">TBD</Link>
             </p>
           </div>
           <div className={styles.NavBaritem}>
             <p className={styles.FancyText}>
-                <Link href="/discord">Discord</Link>
+                <Link href="/tbd">TBD</Link>
             </p>
           </div>
         </div>

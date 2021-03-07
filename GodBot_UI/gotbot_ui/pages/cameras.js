@@ -3,8 +3,27 @@ import styles from '../styles/Home.module.css'
 import Webcam from 'react-webcam'
 import Link from 'next/link'
 import TitleBar from '../components/TitleBar'
+import React from 'react'
 
 export default function cameras(){
+    const [deviceId, setDeviceId] = React.useState({});
+    const [devices, setDevices] = React.useState([]);
+
+    const handleDevices = React.useCallback(
+        mediaDevices =>
+          setDevices(mediaDevices.filter(({ kind }) => kind === "videoinput")),
+        [setDevices]
+      );
+    
+      React.useEffect(
+        () => {
+          navigator.mediaDevices.enumerateDevices().then(handleDevices);
+        },
+        [handleDevices]
+      );
+
+      console.log(devices);
+
     return (
         <div className={styles.container}>
             <Head>
