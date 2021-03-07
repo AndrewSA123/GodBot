@@ -3,12 +3,13 @@ import styles from '../styles/Home.module.css'
 import Webcam from 'react-webcam'
 import Link from 'next/link'
 import TitleBar from '../components/TitleBar'
+const axios = require('axios');
 
 export default function Home() {
   
-  var data = JSON.stringify({"GuildID": "472872500888338452"});
-  console.log(data);
-  fetch('http://192.168.1.144:3344/GetAllMembers', {method: 'POST', mode : 'cors', body: data}).then(res => console.log(res));
+  // const data = JSON.stringify({GuildID: "472872500888338452"});
+  // console.log(data);
+  // axios.post('http://192.168.1.144:3344/GetAllMembers', {GuildID: "472872500888338452"}).then(res => console.log(res));
 
   return (
     <div className={styles.container}>
