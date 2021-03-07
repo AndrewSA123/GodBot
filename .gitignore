@@ -42,10 +42,10 @@ node_modules/
 jspm_packages/
 token.txt
 RiotKey.txt
-GodBotUI/godbotui/node_modules
-GodBot_Eyes/node_modules
-GodBotUI/godbotui/.gitignore
-GodBotUI/godbotui/README.md
+Settings.json
+GodBot_UI/godbot_ui/node_modules
+GodBot_UI/godbot_ui/.gitignore
+GodBot_UI/godbot_ui/README.md
 
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
