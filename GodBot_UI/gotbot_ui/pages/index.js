@@ -5,6 +5,11 @@ import Link from 'next/link'
 import TitleBar from '../components/TitleBar'
 
 export default function Home() {
+  
+  var data = JSON.stringify({"GuildID": "472872500888338452"});
+  console.log(data);
+  fetch('http://192.168.1.144:3344/GetAllMembers', {method: 'POST', mode : 'cors', body: data}).then(res => console.log(res));
+
   return (
     <div className={styles.container}>
       <Head>
