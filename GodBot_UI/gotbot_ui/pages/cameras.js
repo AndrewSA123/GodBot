@@ -11,7 +11,7 @@ export default function cameras(){
                 <title>GodBot Eyes</title>
                 <link rel="icon" href="/Icon.svg" />
             </Head>
-            <TitleBar SubTitle="GodBots Eyes" />
+            <TitleBar SubTitle="GodBots Eyes (Wifi Cameras)" />
             <Webcam />
         </div>
     )
