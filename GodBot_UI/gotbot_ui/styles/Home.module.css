@@ -1,7 +1,3 @@
-.TextGradient {
-  color: linear-gradient(to right, blue, indigo, violet);
-}
-
 .container {
   min-height: 100vh;
   padding: 0 0.5rem;
@@ -82,13 +78,39 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: 800px;
+  width: 1800px;
   margin-top: 3rem;
+}
+
+.Column{
+  margin: 1rem;
+  flex-basis: 40%;
+  padding: 1.5rem;
+  text-align: center;
+  color: inherit;
+  text-decoration: none;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+  transition: color 0.15s ease, border-color 0.15s ease, border-radius 0.15s ease;
+}
+
+.Column h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+  background-image: -webkit-linear-gradient(right, blue, indigo, violet);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.Column p {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.5;
 }
 
 .card {
   margin: 1rem;
-  /*flex-basis: 45%;*/
+  flex-basis: 45%;
   padding: 1.5rem;
   text-align: left;
   color: inherit;
@@ -166,6 +188,18 @@
   border-radius: 10px;
   flex-basis: 20%;
 }
+
+.NavBaritem:hover,
+.NavBaritem:focus,
+.NavBaritem:active{
+  background-image: -webkit-linear-gradient(right, blue, indigo, violet);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-image: linear-gradient(to right, blue, indigo, violet);
+  -webkit-border-image: -webkit-linear-gradient(right, blue, indigo, violet);
+  border-image-slice: 1;
+  border-radius: 10px;
+} 
 
 .FancyText {
   background-image: -webkit-linear-gradient(right, blue, indigo, violet);
