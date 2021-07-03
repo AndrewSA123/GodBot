@@ -3,36 +3,14 @@ import styles from '../styles/Home.module.css'
 import TitleBar from '../components/TitleBar'
 import React from 'react'
 import Footer from '../components/Footer'
+import Member from '../components/Member'
+import MembersList from '../components/MembersList'
 const axios = require('axios');
 
 export async function getServerSideProps() {
-    let Guilds = await axios.get('http://192.168.1.144:3344/GetAllGuilds').then(async (res) => {
-        let returnData = [];
-        await res.data.forEach(async (guild) => {
-            let guildData = {
-                name: guild.name,
-                id: guild.id,
-                Members: []
-            }
 
-            let guildID = {
-                GuildID: guild.id
-            };
-
-            guildData.Members.push(await axios.post('http://192.168.1.144:3344/GetAllMembers', guildID).then((res) => {
-                return res.data;
-            }));
-
-            //guildData.Members = guildMembers.data;
-            //console.log(guildData);
-            
-            returnData.push(guildData);
-            //console.log(returnData);
-
-            return returnData;
-        });
-        //console.log(returnData);
-        return returnData;
+    let Guilds = await axios.get('http://192.168.1.144:3344/GetAllGuilds').then((res) => {
+        return res.data;
     });
 
     return {
@@ -40,7 +18,7 @@ export async function getServerSideProps() {
        Guilds: Guilds
       }
     }
-  }
+}
 
 export default function discord(props){
     //console.log(props);
@@ -61,7 +39,7 @@ export default function discord(props){
                                 <h3>{name}</h3>
                             </div>
                             <hr/>
-                            
+                            <MembersList id={id}/>
                         </div>
                     ))}
                 </div>

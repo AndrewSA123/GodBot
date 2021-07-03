@@ -76,14 +76,24 @@
 .grid {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 170%;
+  margin-top: 3rem;
+}
+
+.halfGrid {
+  display: flex;
+  align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  width: 1800px;
+  width: 45%;
   margin-top: 3rem;
 }
 
 .Column{
-  margin: 1rem;
+  margin: auto;
+  margin-top: 0px;
   flex-basis: 40%;
   padding: 1.5rem;
   text-align: center;
@@ -205,6 +215,51 @@
   background-image: -webkit-linear-gradient(right, blue, indigo, violet);
   background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.MemberCards {
+  margin: 1rem;
+  flex-basis: 45%;
+  padding: 1.5rem;
+  text-align: left;
+  color: inherit;
+  text-decoration: none;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+  transition: color 0.15s ease, border-color 0.15s ease, border-radius 0.15s ease;
+}
+
+.MemberCards:hover,
+.MemberCards:focus,
+.MemberCards:active {
+  border: 1px solid;
+  border-radius: 10px;
+  overflow: hidden;
+  border-image: linear-gradient(to right, blue, indigo, violet);
+  -webkit-border-image: -webkit-linear-gradient(right, blue, indigo, violet);
+  border-image-slice: 1;
+}
+
+.GlobalButton{
+  display: inline;
+  border-color: blueviolet;
+  background-color:blueviolet;
+  border-image-slice: 1;
+  border-radius: 10px;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width:45%;
+}
+
+.GlobalBadButton{
+  display: inline;
+  border-color: red;
+  background-color:red;
+  border-image-slice: 1;
+  border-radius: 10px;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width:45%;
 }
 
 @media (max-width: 600px) {
