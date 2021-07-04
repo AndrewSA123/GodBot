@@ -4,31 +4,38 @@ import React, {useState} from 'react';
 import Bootstrap from 'react-bootstrap'
 import {Button, Modal} from 'react-bootstrap'
 import axios from 'axios'
+import ChannelsDropDown from './ChannelsDropDown';
 
 export default class extends React.Component {
 
     constructor(props){
         super(props);
+
+        let Channels = this.GetChannels(props.GuildID);
         this.state={
-            show:false
+            show:false,
+            channels:Channels
         }
     }
 
-    async Message(){
-        // var channelInput = {
-        //     GuildID: this.props.GuildID
-        // }
-        // let channels = await axios.post('http://192.168.1.144:3344/GetTextChannels', channelInput).then((res) => {
-        // return res.data;
-        // });
+    GetChannels = async (id) => {
 
-        // this.setState({
-        //     Channels: channels
-        // })
+        var Input = {
+            GuildID: id
+        }
+
+        let temp = await axios.post('http://192.168.1.144:3344/GetTextChannels', Input).then((res) => {
+            return res.data;
+        });
+
+        return temp;
+    }
+
+    async Message(){
 
         var SendInput = {
-            GuildID: "472872500888338452",
-            Mention: "364805721100910592",
+            GuildID: this.props.GuildID,
+            Mention: this.props.UserID,
             Channel: "472875906466185226",
             Message: "Yeah BOI"
         }
@@ -41,6 +48,7 @@ export default class extends React.Component {
             this.setState({show:false});
         }else{
             this.setState({show:true});
+            this.GetChannels(this.props.GuildID);
         }
     }
 
@@ -55,11 +63,11 @@ export default class extends React.Component {
                         </Modal.Header>
                         <Modal.Body>
                             {
-                                
+                                <ChannelsDropDown Channels={this.state.channels} />
                             }
                         </Modal.Body>
                         <Modal.Footer>
-                            <Button variant="info" onClick={() => this.Message()} >Send</Button>
+                            {/* <Button variant="info" onClick={() => this.Message()} >Send</Button> */}
                             <Button variant="danger" onClick={() => this.HandleModal(this.state.show)}>
                                 close
                             </Button>

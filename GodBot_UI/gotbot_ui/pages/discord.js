@@ -20,33 +20,36 @@ export async function getServerSideProps() {
     }
 }
 
-export default function discord(props){
-    //console.log(props);
-    return (
-        <div className={styles.container}>
-            <Head>
-                <title>GodBot Ears</title>
-                <link rel="icon" href="/Icon.svg" />
-            </Head>
-
-            <TitleBar SubTitle="GodBot Ears (Discord servers hosting GodBot)" />
-            
-            <main className={styles.main}>
-                <div className={styles.grid}>
-                    {props.Guilds.map(({name, id}) => (
-                        <div key={id} className={styles.Column}>
-                            <div key={id}>
-                                <h3>{name}</h3>
+export default class extends React.Component{
+    
+    render(){
+        return (
+            <div className={styles.container}>
+                <Head>
+                    <title>GodBot Ears</title>
+                    <link rel="icon" href="/Icon.svg" />
+                </Head>
+    
+                <TitleBar SubTitle="GodBot Ears (Discord servers hosting GodBot)" />
+                
+                <main className={styles.main}>
+                    <div className={styles.grid}>
+                        {this.props.Guilds.map(({name, id}) => (
+                            <div key={id} className={styles.Column}>
+                                <div key={id}>
+                                    <h3>{name}</h3>
+                                </div>
+                                <hr/>
+                                <MembersList id={id}/>
                             </div>
-                            <hr/>
-                            <MembersList id={id}/>
-                        </div>
-                    ))}
-                </div>
-            </main>
-            
-
-            <Footer />
-        </div>
-    )
+                        ))}
+                    </div>
+                </main>
+                
+    
+                <Footer />
+            </div>
+        )
+    }
+    
 }
