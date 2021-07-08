@@ -4,7 +4,8 @@ const { RiotAPI, RiotAPITypes, PlatformId } = require('@fightmegg/riot-api');
 let RiotKey = fs.readFileSync('RiotKey.txt', 'utf8', function (err, result) { });
 const rAPI = new RiotAPI(RiotKey);
 
-const client = new Discord.Client({ ws: { intents: ['GUILD_PRESENCES', 'GUILD_MEMBERS'] }});
+//const client = new Discord.Client({ ws: { intents: ['GUILD_PRESENCES', 'GUILD_MEMBERS'] }});
+const client = new Discord.Client(); //without intents
 
 client.commands = new Discord.Collection();
 
