@@ -4,7 +4,7 @@ import React, {useState} from 'react';
 import Bootstrap from 'react-bootstrap'
 import {Button, Modal} from 'react-bootstrap'
 import axios from 'axios'
-import ChannelsDropDown from './ChannelsDropDown';
+import MessageForm from './MessageForm';
 
 export default class extends React.Component {
 
@@ -31,18 +31,6 @@ export default class extends React.Component {
         return temp;
     }
 
-    async Message(){
-
-        var SendInput = {
-            GuildID: this.props.GuildID,
-            Mention: this.props.UserID,
-            Channel: "472875906466185226",
-            Message: "Yeah BOI"
-        }
-
-        axios.post('http://192.168.1.144:3344/SendMessageWithMention', SendInput);
-    }
-
     HandleModal = (val) => {
         if(val){
             this.setState({show:false});
@@ -63,11 +51,10 @@ export default class extends React.Component {
                         </Modal.Header>
                         <Modal.Body>
                             {
-                                <ChannelsDropDown Channels={this.state.channels} />
+                                <MessageForm Channels={this.state.channels} GuildID={this.props.GuildID} UserID={this.props.UserID}/>
                             }
                         </Modal.Body>
                         <Modal.Footer>
-                            {/* <Button variant="info" onClick={() => this.Message()} >Send</Button> */}
                             <Button variant="danger" onClick={() => this.HandleModal(this.state.show)}>
                                 close
                             </Button>
