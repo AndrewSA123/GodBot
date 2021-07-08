@@ -187,7 +187,7 @@ app.get('/GetAllGuilds', (req, res) => {
 
 app.post('/GetAllMembers', (req, res) => {
     const guild = client.guilds.cache.get(req.body.GuildID);
-    res.json(guild.members.cache);
+    res.json(guild.members.cache.filter(m => m.presence.status === 'online'));
 });
 
 app.post('/GetMemberByID', async (req, res) => {
