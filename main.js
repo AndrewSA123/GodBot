@@ -4,7 +4,7 @@ const { RiotAPI, RiotAPITypes, PlatformId } = require('@fightmegg/riot-api');
 let RiotKey = fs.readFileSync('RiotKey.txt', 'utf8', function (err, result) { });
 const rAPI = new RiotAPI(RiotKey);
 
-const client = new Discord.Client();
+const client = new Discord.Client({ ws: { intents: ['GUILD_PRESENCES', 'GUILD_MEMBERS'] }});
 
 client.commands = new Discord.Collection();
 
@@ -189,11 +189,10 @@ app.post('/GetAllMembers', (req, res) => {
     res.json(guild.members.cache);
 });
 
-app.post('/GetMemberByID', (req, res) => {
-    const guild = client.guilds.cache.get(req.body.GuildID);
-    const member = guild.members.cache.get(req.body.MemberID);
+app.post('/GetMemberByID', async (req, res) => {
+    const user = await client.users.fetch(req.body.MemberID, true, true);
 
-    res.json(member);
+    res.json(user);
 });
 
 app.post('/ChangeSettings', (req, res) => {
