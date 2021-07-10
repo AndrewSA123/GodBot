@@ -6,7 +6,7 @@ import {Button, Modal} from 'react-bootstrap'
 import axios from 'axios'
 import MessageForm from './MessageForm';
 
-export default class extends React.Component {
+export default class MessageButton extends React.Component {
 
     constructor(props){
         super(props);
@@ -41,35 +41,25 @@ export default class extends React.Component {
     }
 
     render(){
-        if(this.state !== null){
-            return (
-                <div md={6}>
-                    <Button variant="info" size="sm" type="button" onClick={() => this.Message(this.props.UserID), () => this.HandleModal(this.state.show)}>Message</Button>
-                    <Modal show={this.state.show} keyboard={false} backdrop="static">
-                        <Modal.Header>
-                            <Modal.Title>Send Message</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            {
-                                <MessageForm Channels={this.state.channels} GuildID={this.props.GuildID} UserID={this.props.UserID}/>
-                            }
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button variant="danger" onClick={() => this.HandleModal(this.state.show)}>
-                                close
-                            </Button>
-                        </Modal.Footer>
-                    </Modal>
-                </div>
-            )
-        }else{
-            return (
-                <div md={6}>
-                    <Button variant="info" size="sm" type="button" onClick={() => this.Message(this.props.UserID)}>Message</Button>
-                </div>
-            )
-        }
-
-        
+        return (
+            <div md={6}>
+                <Button variant="info" size="sm" type="button" onClick={() => this.Message(this.props.UserID), () => this.HandleModal(this.state.show)}>Message</Button>
+                <Modal show={this.state.show} keyboard={false} backdrop="static">
+                    <Modal.Header>
+                        <Modal.Title>Send Message</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        {
+                            <MessageForm Channels={this.state.channels} GuildID={this.props.GuildID} UserID={this.props.UserID}/>
+                        }
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="danger" onClick={() => this.HandleModal(this.state.show)}>
+                            close
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+            </div>
+        )
     }   
 }

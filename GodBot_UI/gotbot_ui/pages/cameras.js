@@ -10,7 +10,7 @@ export default function cameras(){
         <div className={styles.container}>
             <Head>
                 <title>GodBot Eyes</title>
-                <link rel="icon" href="/Icon.svg" />
+                <link rel="icon" href="/icon.jpg" />
             </Head>
 
             <TitleBar SubTitle="GodBots Eyes (Wifi Cameras)" />

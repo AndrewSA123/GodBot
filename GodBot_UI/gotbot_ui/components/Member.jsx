@@ -6,10 +6,13 @@ import MessageButton from './MessageButton'
 import axios from 'axios'
 
 
-export default class extends React.Component {
+export default class Member extends React.Component {
 
     constructor(props){
         super(props);
+        this.state = {
+            userDetail: {}
+        }
     }
 
     async componentDidMount(){
@@ -28,29 +31,21 @@ export default class extends React.Component {
     //console.log(props);
 
     render(){
-        if(this.state !== null){
-            return (
+        return (
+            <div>
                 <div>
                     <div>
-                        <div>
-                            <img src={this.state.userDetail.displayAvatarURL} width="128px" height="128px" />
-                        </div>
-                        <div>
-                            <p>{this.props.DisplayName}</p>
-                        </div>
-                        <div>
-                            <MessageButton UserID={this.props.UserID} GuildID={this.props.GuildID}/>
-                            <KickButton UserID={this.props.UserID} />
-                        </div>
-                        
+                        <img src={this.state.userDetail.displayAvatarURL} width="128px" height="128px" />
                     </div>
+                    <div>
+                        <p>{this.props.DisplayName}</p>
+                    </div>
+                    <div>
+                        <MessageButton UserID={this.props.UserID} GuildID={this.props.GuildID}/>
+                        <KickButton UserID={this.props.UserID} />
+                    </div>                    
                 </div>
-            )
-        }else{
-            return (
-                <div></div>
-            )
-        }
-        
+            </div>
+        )        
     }   
 }

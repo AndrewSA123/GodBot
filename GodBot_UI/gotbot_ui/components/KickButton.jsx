@@ -4,7 +4,7 @@ import React from 'react';
 import Bootstrap from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'
 
-export default class extends React.Component {
+export default class KickButton extends React.Component {
 
     constructor(props){
         super(props);

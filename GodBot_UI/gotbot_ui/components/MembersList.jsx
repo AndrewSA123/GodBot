@@ -4,7 +4,14 @@ import Member from './Member';
 import axios from 'axios';
 import React from 'react';
 
-export default class extends React.Component {
+export default class MemberList extends React.Component {
+
+    constructor(props){
+        super(props);
+        this.state = {
+            People: []
+        }
+    }
 
     async componentDidMount(){
         var input = {
@@ -18,22 +25,16 @@ export default class extends React.Component {
 
     render(){
         //console.log(this.state);
-        if(this.state !== null){
-            return (
-                <div key="MembersContainers">
-                    {
-                        this.state.People.map(({displayName, userID}) => (
-                            <div className={styles.MemberCards} key={"User" + userID}>
-                                <Member DisplayName={displayName} UserID={userID} GuildID={this.props.id}/>
-                            </div>
-                        ))
-                    }
-                </div>
-            )
-        }else{
-            return <div></div>
-        }
-        
+        return (
+            <div key="MembersContainers" className="row">
+                {
+                    this.state.People.map(({displayName, userID}) => (
+                        <div className={styles.MemberCards } key={"User" + userID}>
+                            <Member DisplayName={displayName} UserID={userID} GuildID={this.props.id}/>
+                        </div>
+                    ))
+                }
+            </div>
+        )    
     }
-    
 }

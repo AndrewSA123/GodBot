@@ -24,10 +24,10 @@ export default class extends React.Component{
     
     render(){
         return (
-            <div className={styles.container}>
+            <div className="container">
                 <Head>
                     <title>GodBot Ears</title>
-                    <link rel="icon" href="/Icon.svg" />
+                    <link rel="icon" href="/icon.jpg" />
                 </Head>
     
                 <TitleBar SubTitle="GodBot Ears (Discord servers hosting GodBot)" />

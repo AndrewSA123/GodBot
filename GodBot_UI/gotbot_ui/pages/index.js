@@ -9,7 +9,7 @@ export default function Home() {
     <div className={styles.container}>
       <Head>
         <title>GodBot UI</title>
-        <link rel="icon" href="/Icon.svg" />
+        <link rel="icon" href="/icon.jpg" />
       </Head>
 
       <TitleBar SubTitle="Home assistant for Andrew" />

@@ -5,7 +5,7 @@ import Bootstrap from 'react-bootstrap'
 import {Button, Modal, InputGroup, FormControl} from 'react-bootstrap'
 import axios from 'axios'
 
-export default class extends React.Component {
+export default class MessageForm extends React.Component {
 
     constructor(props){
         super(props);
