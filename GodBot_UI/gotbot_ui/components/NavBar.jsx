@@ -16,7 +16,7 @@ export default function NavBar() {
           </div>
           <div className={styles.NavBaritem}>
             <p className={styles.FancyText}>
-                <Link href="/tbd">TBD</Link>
+                <Link href="/Lol">League</Link>
             </p>
           </div>
           <div className={styles.NavBaritem}>

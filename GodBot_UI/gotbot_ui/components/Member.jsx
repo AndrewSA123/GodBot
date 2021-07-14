@@ -42,7 +42,7 @@ export default class Member extends React.Component {
                     </div>
                     <div>
                         <MessageButton UserID={this.props.UserID} GuildID={this.props.GuildID}/>
-                        <KickButton UserID={this.props.UserID} />
+                        {/* <KickButton UserID={this.props.UserID} /> */}
                     </div>                    
                 </div>
             </div>

@@ -210,6 +210,36 @@ app.get('/GetSettings', (req, res) => {
     res.json(settings);
 });
 
+app.post('/CreateNewLeagueDetails', ( async (req, res) => {
+    fs.access('LeagueData', function(err){
+        if(err && err.code === 'ENOENT'){
+            fs.mkdirSync('LeagueData');
+        }
+    })
+
+    var member = await client.users.fetch(req.body.DiscordID, true, true);
+
+    var LeagueData = await rAPI.summoner.getBySummonerName({
+        region: PlatformId.EUW1,
+        summonerName: req.body.SummonerName
+    });
+
+    var data = {
+        DiscordInfo: member,
+        LeagueInfo: LeagueData 
+    };
+
+    fs.writeFileSync('LeagueData/' + req.body.DiscordID + '.json', JSON.stringify(data), function (err, result) { });
+
+    res.json(data);
+}));
+
+app.get('/GetLeagueData', (req, res) => {
+    var returnData = JSON.parse(fs.readFileSync('LeagueData/' + req.body.MemberID + '.json', 'utf8'));
+
+    res.json(returnData);
+});
+
 
     //End of the File
 try{
