@@ -240,6 +240,16 @@ app.get('/GetLeagueData', (req, res) => {
     res.json(returnData);
 });
 
+app.get('/GetAllLeagueData', (req, res) => {
+    var returnData = [];
+
+    fs.readdirSync('./LeagueData/').forEach(file => {
+        returnData.push(JSON.parse(fs.readFileSync('./LeagueData/' + file)));
+    })
+
+    res.json(returnData);
+});
+
 
     //End of the File
 try{
