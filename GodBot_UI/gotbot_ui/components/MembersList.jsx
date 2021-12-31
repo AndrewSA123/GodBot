@@ -29,7 +29,7 @@ export default class MemberList extends React.Component {
             <div key="MembersContainers" className="row">
                 {
                     this.state.People.map(({displayName, userID}) => (
-                        <div className={styles.MemberCards } key={"User" + userID}>
+                        <div className={styles.MemberCards} key={userID}>
                             <Member DisplayName={displayName} UserID={userID} GuildID={this.props.id}/>
                         </div>
                     ))

@@ -41,6 +41,7 @@ build/Release
 node_modules/
 jspm_packages/
 LeagueData/
+DndReminders/
 token.txt
 RiotKey.txt
 Settings.json

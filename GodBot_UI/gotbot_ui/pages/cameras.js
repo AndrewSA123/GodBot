@@ -7,7 +7,7 @@ import Footer from '../components/Footer'
 
 export default function cameras(){
     return (
-        <div className={styles.container}>
+        <div className="container">
             <Head>
                 <title>GodBot Eyes</title>
                 <link rel="icon" href="/icon.jpg" />

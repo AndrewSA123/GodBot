@@ -6,7 +6,7 @@ const axios = require('axios');
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <div className="container" width="100%">
       <Head>
         <title>GodBot UI</title>
         <link rel="icon" href="/icon.jpg" />

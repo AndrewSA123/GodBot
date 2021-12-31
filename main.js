@@ -3,9 +3,10 @@ const fs = require('fs');
 const { RiotAPI, RiotAPITypes, PlatformId } = require('@fightmegg/riot-api');
 let RiotKey = fs.readFileSync('RiotKey.txt', 'utf8', function (err, result) { });
 const rAPI = new RiotAPI(RiotKey);
+const intents = new Discord.Intents(32767);
 
-//const client = new Discord.Client({ ws: { intents: ['GUILD_PRESENCES', 'GUILD_MEMBERS'] }});
-const client = new Discord.Client(); //without intents
+const client = new Discord.Client({ intents });
+//const client = new Discord.Client(); //without intents
 
 client.commands = new Discord.Collection();
 
@@ -55,6 +56,25 @@ client.once('ready', () => {
     }
 });
 
+async function SendReminder(){
+    var reminders = [];
+
+    fs.readdirSync('./DndReminders', function (err, files) {
+        if(err){
+            console.error("No reminders to read", err);
+        }
+
+        files.forEach(function (file, index){
+            //Adds files to json array
+            reminders.push(JSON.parse(fs.readFileSync('./DndReminder/' + file)));
+        })
+    });
+
+    reminders.forEach(reminder => {
+        console.log(reminder.id);
+    });
+}
+
 client.on('guildMemberSpeaking', (member, speaking) => {
     settings = JSON.parse(fs.readFileSync('Settings.json', 'utf8'));
 
@@ -75,7 +95,7 @@ client.on('messageUpdate', (oldMessage, newMessage) => {
     //oldMessage.channel.send(`${oldMessage.author} edited a message\n` + 'Old Message: ' + oldMessage.content + '\n\n' + 'New Message: ' + newMessage.content);
 });
 
-client.on('message', message => {
+client.on('messageCreate', message => {
 
     settings = JSON.parse(fs.readFileSync('Settings.json', 'utf8'));
 
@@ -118,7 +138,6 @@ client.on('message', message => {
         }
     }
 
-
 });
 
 //API Layer
@@ -130,7 +149,6 @@ const app = express();
 const server = http.createServer(app);
 var cors = require('cors')
 app.use(express.json());
-app.use(cors());
 
 //Do on startup
 server.listen(port, hostname, () => {
@@ -250,6 +268,7 @@ app.get('/GetAllLeagueData', (req, res) => {
     res.json(returnData);
 });
 
+app.use(cors());
 
     //End of the File
 try{
