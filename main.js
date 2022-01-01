@@ -205,7 +205,6 @@ app.get('/GetAllGuilds', (req, res) => {
 
 app.post('/GetAllMembers', (req, res) => {
     const guild = client.guilds.cache.get(req.body.GuildID);
-    console.log(guild);
     res.json(guild.members.cache.filter(m => !m.user.bot && m.presence?.status !== 'online'));
 });
 
