@@ -13,7 +13,7 @@
     "@discordjs/node-pre-gyp": "^0.4.2",
     "@discordjs/opus": "^0.7.0",
     "@discordjs/voice": "0.7.5",
-    "@fightmegg/riot-api": "0.0.5",
+    "@fightmegg/riot-api": "^0.0.8",
     "cors": "^2.8.5",
     "discord-ytdl-core": "^5.0.4",
     "discord.js": "^13.5.0",

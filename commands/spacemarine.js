@@ -27,7 +27,7 @@ module.exports = {
 
             player.on(AudioPlayerStatus.Idle, () => {
                 connection.destroy();
-            });            
+            });
             
         }else{
             message.reply("You need to be in a channel");
