@@ -13,6 +13,8 @@ export async function getServerSideProps() {
         return res.data;
     });
 
+    console.log(Guilds);
+
     return {
       props: {
        Guilds: Guilds
