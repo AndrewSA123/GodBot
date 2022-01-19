@@ -209,7 +209,7 @@ app.post('/GetAllMembers', (req, res) => {
 });
 
 app.post('/GetMemberByID', async (req, res) => {
-    const user = await client.users.fetch(req.body.MemberID, true, true);
+    user = await client.users.fetch(req.body.MemberID, {cache: true, force: true});
 
     res.json(user);
 });
