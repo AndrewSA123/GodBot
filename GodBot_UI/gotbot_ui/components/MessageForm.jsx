@@ -34,7 +34,7 @@ export default class MessageForm extends React.Component {
             Message: this.state.Message
         }
 
-        let response = await axios.post('http://192.168.1.144:3344/SendMessageWithMention', SendInput).then(res => {
+        let response = await axios.post('http://192.168.1.144:3344/Discord/SendMessageWithMention', SendInput).then(res => {
             return res.data
         });
 

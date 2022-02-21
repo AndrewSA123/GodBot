@@ -4,7 +4,7 @@
   "description": "GodBot Init",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "devStart": "nodemon main.js"
   },
   "author": "Andrew",
   "license": "ISC",
@@ -25,5 +25,8 @@
     "tweetnacl": "^1.0.3",
     "ytdl": "^1.4.1",
     "ytdl-core": "^4.9.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }

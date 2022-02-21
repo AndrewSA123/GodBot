@@ -16,7 +16,7 @@ export default class Lol extends React.Component{
     }
 
     async componentDidMount(){
-        let LeagueData = await axios.get('http://192.168.1.144:3344/GetAllLeagueData').then((res) => {
+        let LeagueData = await axios.get('http://192.168.1.144:3344/League/GetAllLeagueData').then((res) => {
             return res.data;
         });
 

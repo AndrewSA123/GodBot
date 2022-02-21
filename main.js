@@ -1,8 +1,5 @@
 const Discord = require('discord.js');
 const fs = require('fs');
-const { RiotAPI, RiotAPITypes, PlatformId } = require('@fightmegg/riot-api');
-let RiotKey = fs.readFileSync('RiotKey.txt', 'utf8', function (err, result) { });
-const rAPI = new RiotAPI(RiotKey);
 const intents = new Discord.Intents(32767);
 
 const client = new Discord.Client({ intents });
@@ -155,118 +152,18 @@ server.listen(port, hostname, () => {
     console.log("API Connected");
 });
 
-//Endpoints
-app.post('/SendMessage', (req, res) => {
-    const guild = client.guilds.cache.get(req.body.GuildID);
-    const channel = guild.channels.cache.get(req.body.Channel);
-    channel.send(req.body.Message);
+app.get('/', (req, res) => {
+    res.status(200).send({"Message":"/ route for godbot."});
+})
 
-    var response = {
-        Status: 200,
-        Message: "Message Sent"
-    };
+const SettingsRouter = require('./Routes/Settings');
+app.use('/settings', SettingsRouter);
 
-    res.json(response);
-});
+const LeagueRouter = require('./Routes/League');
+app.use('/league', LeagueRouter);
 
-app.post('/SendMessageWithMention', (req, res) => {
-    const guild = client.guilds.cache.get(req.body.GuildID);
-    const channel = guild.channels.cache.get(req.body.Channel);
-    channel.send("<@" + req.body.Mention + ">" + " " + req.body.Message);
-
-    var response = {
-        Status: 200,
-        Message: "Message Sent"
-    };
-
-    res.json(response);
-});
-
-app.post('/GetMessagesForChannel', async (req, res) => {
-    const guild = client.guilds.cache.get(req.body.GuildID);
-    const channel = guild.channels.cache.get(req.body.Channel);
-
-    const messages = await channel.messages.fetch({ limit: req.body.Limit });
-
-    res.json(messages);
-});
-
-app.post('/GetTextChannels', (req, res) => {
-    res.json(client.guilds.cache.get(req.body.GuildID).channels.cache.filter(m => m.type == "text"));
-});
-
-app.post('/GetVoiceChannels', (req, res) => {
-    res.json(client.guilds.cache.get(req.body.GuildID).channels.cache.filter(m => m.type == "voice"));
-});
-
-app.get('/GetAllGuilds', (req, res) => {
-    res.json(client.guilds.cache);
-});
-
-app.post('/GetAllMembers', (req, res) => {
-    const guild = client.guilds.cache.get(req.body.GuildID);
-    res.json(guild.members.cache.filter(m => !m.user.bot && m.presence?.status === 'online'));
-});
-
-app.post('/GetMemberByID', async (req, res) => {
-    user = await client.users.fetch(req.body.MemberID, {cache: true, force: true});
-
-    res.json(user);
-});
-
-app.post('/ChangeSettings', (req, res) => {
-    fs.writeFileSync('Settings.json', JSON.stringify(req.body), function (err, result) { });
-
-    settings = JSON.parse(fs.readFileSync('Settings.json', 'utf8'));
-
-    res.json(settings);
-});
-
-app.get('/GetSettings', (req, res) => {
-    settings = JSON.parse(fs.readFileSync('Settings.json', 'utf8'));
-
-    res.json(settings);
-});
-
-app.post('/CreateNewLeagueDetails', ( async (req, res) => {
-    fs.access('LeagueData', function(err){
-        if(err && err.code === 'ENOENT'){
-            fs.mkdirSync('LeagueData');
-        }
-    })
-
-    var member = await client.users.fetch(req.body.DiscordID, true, true);
-
-    var LeagueData = await rAPI.summoner.getBySummonerName({
-        region: PlatformId.EUW1,
-        summonerName: req.body.SummonerName
-    });
-
-    var data = {
-        DiscordInfo: member,
-        LeagueInfo: LeagueData 
-    };
-
-    fs.writeFileSync('LeagueData/' + req.body.DiscordID + '.json', JSON.stringify(data), function (err, result) { });
-
-    res.json(data);
-}));
-
-app.get('/GetLeagueData', (req, res) => {
-    var returnData = JSON.parse(fs.readFileSync('LeagueData/' + req.body.MemberID + '.json', 'utf8'));
-
-    res.json(returnData);
-});
-
-app.get('/GetAllLeagueData', (req, res) => {
-    var returnData = [];
-
-    fs.readdirSync('./LeagueData/').forEach(file => {
-        returnData.push(JSON.parse(fs.readFileSync('./LeagueData/' + file)));
-    })
-
-    res.json(returnData);
-});
+const DiscordRouter = require('./Routes/Discord');
+app.use('/Discord', DiscordRouter);
 
 app.use(cors());
 
@@ -277,3 +174,5 @@ try{
 }catch(err){
     console.log("Token Error!");
 }
+
+module.exports = client;

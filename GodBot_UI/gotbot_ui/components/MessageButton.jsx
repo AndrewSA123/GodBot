@@ -24,7 +24,7 @@ export default class MessageButton extends React.Component {
             GuildID: id
         }
 
-        let temp = await axios.post('http://192.168.1.144:3344/GetTextChannels', Input).then((res) => {
+        let temp = await axios.post('http://192.168.1.144:3344/Discord/GetTextChannels', Input).then((res) => {
             return res.data;
         });
 

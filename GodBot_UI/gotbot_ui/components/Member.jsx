@@ -20,7 +20,7 @@ export default class Member extends React.Component {
             MemberID: this.props.UserID
         }
 
-        let userDetails = await axios.post('http://192.168.1.144:3344/GetMemberByID', input).then(res => {
+        let userDetails = await axios.post('http://192.168.1.144:3344/Discord/GetMemberByID', input).then(res => {
             this.setState({
                 userDetail: res.data
             })

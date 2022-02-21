@@ -17,7 +17,7 @@ export default class MemberList extends React.Component {
         var input = {
             GuildID: this.props.id
         }
-        let Members = await axios.post('http://192.168.1.144:3344/GetAllMembers', input).then((res) => {
+        let Members = await axios.post('http://192.168.1.144:3344/Discord/GetAllMembers', input).then((res) => {
         return res.data;
         });
         this.setState({People: Members});

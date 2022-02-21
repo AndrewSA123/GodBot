@@ -9,7 +9,7 @@ const axios = require('axios');
 
 export async function getServerSideProps() {
 
-    let Guilds = await axios.get('http://192.168.1.144:3344/GetAllGuilds').then((res) => {
+    let Guilds = await axios.get('http://192.168.1.144:3344/Discord/GetAllGuilds').then((res) => {
         return res.data;
     });
 
