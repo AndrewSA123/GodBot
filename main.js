@@ -1,5 +1,8 @@
 const Discord = require('discord.js');
 const fs = require('fs');
+const { RiotAPI, RiotAPITypes, PlatformId } = require('@fightmegg/riot-api');
+let RiotKey = fs.readFileSync('RiotKey.txt', 'utf8', function (err, result) { });
+const rAPI = new RiotAPI(RiotKey);
 const intents = new Discord.Intents(32767);
 
 const client = new Discord.Client({ intents });
@@ -167,12 +170,12 @@ app.use('/Discord', DiscordRouter);
 
 app.use(cors());
 
-    //End of the File
+
+
 try{
     let Token = fs.readFileSync('token.txt', 'utf8', function (err, result) { });
     client.login(Token);
+    app.set('client', client);
 }catch(err){
     console.log("Token Error!");
 }
-
-module.exports = client;

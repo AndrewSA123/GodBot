@@ -2,17 +2,12 @@ const express = require('express');
 const app = express.Router();
 const fs = require('fs');
 
-const Discord = require('discord.js');
-const intents = new Discord.Intents(32767);
-const client = new Discord.Client({ intents });
-let Token = fs.readFileSync('token.txt', 'utf8', function (err, result) { });
-client.login(Token);
-
 const { RiotAPI, RiotAPITypes, PlatformId } = require('@fightmegg/riot-api');
 let RiotKey = fs.readFileSync('RiotKey.txt', 'utf8', function (err, result) { });
 const rAPI = new RiotAPI(RiotKey);
 
 app.post('/CreateNewLeagueDetails', ( async (req, res) => {
+    const client = req.app.get('client');
     fs.access('LeagueData', function(err){
         if(err && err.code === 'ENOENT'){
             fs.mkdirSync('LeagueData');
@@ -37,12 +32,14 @@ app.post('/CreateNewLeagueDetails', ( async (req, res) => {
 }));
 
 app.get('/GetLeagueData', (req, res) => {
+    const client = req.app.get('client');
     var returnData = JSON.parse(fs.readFileSync('LeagueData/' + req.body.MemberID + '.json', 'utf8'));
 
     res.json(returnData);
 });
 
 app.get('/GetAllLeagueData', (req, res) => {
+    const client = req.app.get('client');
     var returnData = [];
 
     fs.readdirSync('./LeagueData/').forEach(file => {
