@@ -1,9 +1,12 @@
+require('dotenv').config();
 const Discord = require('discord.js');
 const fs = require('fs');
 const { RiotAPI, RiotAPITypes, PlatformId } = require('@fightmegg/riot-api');
-let RiotKey = fs.readFileSync('RiotKey.txt', 'utf8', function (err, result) { });
-const rAPI = new RiotAPI(RiotKey);
+const rAPI = new RiotAPI(process.env.RIOT_KEY);
 const intents = new Discord.Intents(32767);
+const scheduler = require('node-schedule');
+const moment = require('moment');
+
 
 const client = new Discord.Client({ intents });
 //const client = new Discord.Client(); //without intents
@@ -26,10 +29,6 @@ if (!fs.existsSync('Settings.json')) {
             ListenTarget: '342941329577213952',
             God: "159783547165605888",
             Limit: false
-        },
-        Http:{
-            Port: 3344,
-            HostName: "127.0.0.1"
         }
     };
 
@@ -55,25 +54,6 @@ client.once('ready', () => {
         channel.join();
     }
 });
-
-async function SendReminder(){
-    var reminders = [];
-
-    fs.readdirSync('./DndReminders', function (err, files) {
-        if(err){
-            console.error("No reminders to read", err);
-        }
-
-        files.forEach(function (file, index){
-            //Adds files to json array
-            reminders.push(JSON.parse(fs.readFileSync('./DndReminder/' + file)));
-        })
-    });
-
-    reminders.forEach(reminder => {
-        console.log(reminder.id);
-    });
-}
 
 client.on('guildMemberSpeaking', (member, speaking) => {
     settings = JSON.parse(fs.readFileSync('Settings.json', 'utf8'));
@@ -142,8 +122,8 @@ client.on('messageCreate', message => {
 
 //API Layer
 const http = require('http');
-const hostname = settings.Http.HostName;
-const port = settings.Http.Port;
+const hostname = process.env.HOSTNAME;
+const port = process.env.PORT;
 const express = require('express');
 const app = express();
 const server = http.createServer(app);
@@ -160,22 +140,52 @@ app.get('/', (req, res) => {
 })
 
 const SettingsRouter = require('./Routes/Settings');
-app.use('/settings', SettingsRouter);
+app.use('/Settings', SettingsRouter);
 
 const LeagueRouter = require('./Routes/League');
-app.use('/league', LeagueRouter);
+app.use('/League', LeagueRouter);
 
 const DiscordRouter = require('./Routes/Discord');
 app.use('/Discord', DiscordRouter);
 
 app.use(cors());
 
-
-
 try{
-    let Token = fs.readFileSync('token.txt', 'utf8', function (err, result) { });
-    client.login(Token);
+    client.login(process.env.DISCORD_KEY);
     app.set('client', client);
+    // const job = scheduler.scheduleJob('*/10 * * * * *', function(fireDate) {
+    //     SendReminder(fireDate);
+    // });
 }catch(err){
     console.log("Token Error!");
+}
+
+
+async function SendReminder(fireDate){
+    console.log("Running DnD reminder job at: " + fireDate);
+
+    var reminders = [];
+
+    let files = new fs.readdirSync('./DndReminders/');
+
+    if(files.length > 0){
+
+        for(const fileName of files){
+            reminders.push(JSON.parse(fs.readFileSync('./DndReminders/' + fileName)));
+        }
+    
+        reminders.forEach(reminder => {
+            console.log(reminder);
+
+            let now = new Date();
+            let nowUTC = moment.utc(now).format("DD/MM/YYYY");
+            let reminderDate = moment.utc(reminder.NextPlayDate, "DD/MM/YYYY", true).format("DD/MM/YYYY");
+            //Do something along the lines of sending message using the data in the reminder to inform people of DND init
+
+
+        });
+
+    }else{
+        console.log("No DnD Reminders");
+    }
 }

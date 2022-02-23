@@ -1,10 +1,10 @@
+require('dotenv').config();
 const express = require('express');
 const app = express.Router();
 const fs = require('fs');
 
 const { RiotAPI, RiotAPITypes, PlatformId } = require('@fightmegg/riot-api');
-let RiotKey = fs.readFileSync('RiotKey.txt', 'utf8', function (err, result) { });
-const rAPI = new RiotAPI(RiotKey);
+const rAPI = new RiotAPI(process.env.RIOT_KEY);
 
 app.post('/CreateNewLeagueDetails', ( async (req, res) => {
     const client = req.app.get('client');
