@@ -3,7 +3,9 @@
 # GodBot
 
 # Before First run!
-# Create a file in the root directory called 'token.txt'
-# inside this file add your Discord Bot Token into this file (Nothing else except this token string)
-# Create a file in the root directry called 'RiotKey.txt'
-# Inside this file place your riot api key (nothing but the string)
+# a .env file is needed with a few variables to run this project example below
+
+# PORT=3000 Port you want the express server to run on
+# HOSTNAME=127.0.0.1 the ip address and or dns lookup you want the express server to listen on
+# RIOT_KEY=RGAPIXXXXXXXXXXXX riot games api key
+# DISCORD_KEY=XXXXXXXXXXXXXX discord api key
