@@ -1,6 +1,6 @@
 import { ChannelType } from 'discord.js';
 import type { Guild, User } from 'discord.js';
-import { saveMonitoredChannels } from './db/guildConfig.js';
+import { saveMonitoredChannels } from './db/guildconfig.js';
 
 export async function promptForChannels(guild: Guild, targetUser: User): Promise<void> {
   const dmChannel = await targetUser.createDM();
