@@ -1,7 +1,9 @@
 import 'dotenv/config';
 import { Client, Events, GatewayIntentBits, Partials, REST, Routes } from 'discord.js';
-import * as configureChannels from './commands/configureChannels.ts';
-import { promptForChannels } from './onboarding.ts';
+import * as configureChannels from './commands/configureChannels.js';
+import { isMonitoredChannel, loadMonitoredChannels } from './config/monitoredChannels.js';
+import { logMessage } from './db/messages.js';
+import { promptForChannels } from './onboarding.js';
 
 const token = process.env.DISCORD_TOKEN;
 const clientId = process.env.DISCORD_CLIENT_ID;
@@ -14,7 +16,12 @@ if (!clientId) {
 }
 
 const client = new Client({
-  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.DirectMessages],
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.DirectMessages,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.MessageContent,
+  ],
   partials: [Partials.Channel],
 });
 
@@ -29,6 +36,7 @@ async function registerCommandsForGuild(guildId: string): Promise<void> {
 
 client.once(Events.ClientReady, async (readyClient) => {
   console.log(`Logged in as ${readyClient.user.tag}`);
+  await loadMonitoredChannels();
   for (const guild of readyClient.guilds.cache.values()) {
     await registerCommandsForGuild(guild.id);
   }
@@ -45,6 +53,19 @@ client.on(Events.InteractionCreate, async (interaction) => {
   if (interaction.commandName === configureChannels.data.name) {
     await configureChannels.execute(interaction);
   }
+});
+
+client.on(Events.MessageCreate, async (message) => {
+  if (message.author.bot) return;
+  if (!message.guildId) return;
+  if (!isMonitoredChannel(message.guildId, message.channelId)) return;
+
+  await logMessage({
+    guildId: message.guildId,
+    channelId: message.channelId,
+    authorId: message.author.id,
+    content: message.content,
+  }).catch((error) => console.error('Failed to log message:', error));
 });
 
 client.login(token);

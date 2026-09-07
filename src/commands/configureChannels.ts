@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, PermissionFlagsBits, SlashCommandBuilder } from 'discord.js';
-import { promptForChannels } from '../onboarding.ts';
+import { promptForChannels } from '../onboarding.js';
 
 export const data = new SlashCommandBuilder()
   .setName('configure-channels')

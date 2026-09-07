@@ -1,4 +1,5 @@
 import { supabase } from '../config/supabase.js';
+import { setMonitoredChannels } from '../config/monitoredChannels.js';
 
 export async function saveMonitoredChannels(guildId: string, channelIds: string[]): Promise<void> {
   const { error: guildError } = await supabase
@@ -14,10 +15,12 @@ export async function saveMonitoredChannels(guildId: string, channelIds: string[
 
   if (deleteError) throw deleteError;
 
-  if (channelIds.length === 0) return;
+  if (channelIds.length > 0) {
+    const rows = channelIds.map((channelId) => ({ guild_id: guildId, channel_id: channelId }));
+    const { error: insertError } = await supabase.from('guild_channels').insert(rows);
 
-  const rows = channelIds.map((channelId) => ({ guild_id: guildId, channel_id: channelId }));
-  const { error: insertError } = await supabase.from('guild_channels').insert(rows);
+    if (insertError) throw insertError;
+  }
 
-  if (insertError) throw insertError;
+  setMonitoredChannels(guildId, channelIds);
 }
