@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import { Client, Events, GatewayIntentBits, Partials, REST, Routes } from 'discord.js';
-import * as configureChannels from './commands/configureChannels.js';
-import { isMonitoredChannel, loadMonitoredChannels } from './config/monitoredChannels.js';
+import * as configureChannels from './commands/configure-channels.js';
+import { isMonitoredChannel, loadMonitoredChannels } from './config/monitored-channels.js';
 import { logMessage } from './db/messages.js';
 import { promptForChannels } from './onboarding.js';
 

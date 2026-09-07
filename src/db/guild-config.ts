@@ -1,5 +1,5 @@
 import { supabase } from '../config/supabase.js';
-import { setMonitoredChannels } from '../config/monitoredChannels.js';
+import { setMonitoredChannels } from '../config/monitored-channels.js';
 
 export async function saveMonitoredChannels(guildId: string, channelIds: string[]): Promise<void> {
   const { error: guildError } = await supabase
